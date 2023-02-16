@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useMemo } from "react";
-
+import axios from "axios";
 import FullScreenSection from "./FullScreenSection";
 import {Search2Icon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
@@ -43,19 +43,35 @@ const ProjectsSection = () => {
  
   const filteredItems = useMemo(() => {
     return dataProject.filter(item => {
-      return (item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      &&  RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
-      )
+      return (
+        (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+     &&  (RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
+      ))
      
     })
     },[dataProject,RegionQuery,searchQuery]) 
 
+const baseURL= "https://restcountries.com/v2/all";
 
- /*    useEffect(()=>{
-      const fetchData = async () => {
-        let response = await fetch(https://restcountries.com);
-        let data= await response.json();
-        console.log(data)
+console.log(filteredItems)
+
+
+
+  useEffect(()=>{
+      const fetchData = () => {
+       /*  let response = fetch('https://restcountries.com/v3.1/all');
+        let data= response.json()
+        console.log(data) */
+        axios.get(baseURL)
+        .then((response) => {
+          SetDataProject( response.data);
+        })
+        .catch(error => {
+          setError(error);
+        });
+        ;
+
+
       };
     
       fetchData(); // run it, run it
@@ -64,15 +80,15 @@ const ProjectsSection = () => {
         // this now gets called when the component unmounts
       };
 
-    },[]) */
+    },[])
 
 
 
   console.log("searchQuery", searchQuery,"RegionQuery", RegionQuery)
   return (
-    <Box mt={20} >
+    <Box mt={20} width="90%" mx="auto"  minHeight="100vh">
        <form>
-      <Flex py="0.99em" alignItems="center" margin="auto" mb="1.0em" width="84.5%" justifyContent="space-between" >
+      <Flex  alignItems="center"  my="0.95em"  justifyContent="space-between" >
       
       <Box><InputGroup>
             <Input
@@ -94,8 +110,9 @@ const ProjectsSection = () => {
       <Box>
       <Select value={RegionQuery} 
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
-              <option value=''>Africa</option>
-              <option value='America'>America</option>
+            
+              <option value='Africa'>Africa</option>
+              <option value='Americas'>Americas</option>
               <option value='Asia'>Asia</option>
               <option value='Europe'>Europe</option>
               <option value='OCeania'>OCeania</option>
@@ -103,15 +120,7 @@ const ProjectsSection = () => {
       </Box>
       </Flex>
       </form>
-    <FullScreenSection
-      backgroundColor="white"
-      isDarkBackground
-      justifyContent="center"
-      alignItems="flex-start"
-      spacing={8}
-      
-      textAlign="left"
-    >
+ 
     
      
       
@@ -120,7 +129,7 @@ const ProjectsSection = () => {
         gridTemplateColumns="repeat(4,minmax(0,1fr))"
         gridGap={6}
       >
-        {project.map((project) => (
+        {filteredItems.map((project) => (
           
           <Cards
             key={project.flags.png}
@@ -133,7 +142,7 @@ const ProjectsSection = () => {
           />
         ))}
       </Box>
-    </FullScreenSection>
+    
     </Box>
   );
 };

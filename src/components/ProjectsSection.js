@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState,useMemo } from "react";
+
 import FullScreenSection from "./FullScreenSection";
-import { Box, Heading } from "@chakra-ui/react";
+import {Search2Icon } from '@chakra-ui/icons'
+import { useFormik } from "formik";
+import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select} from "@chakra-ui/react";
 import Cards from "./Card";
 import project from "./data" 
 
@@ -31,22 +34,87 @@ const projects = [
   },
 ];
 
+
+
 const ProjectsSection = () => {
-  console.log("sure", project[1]["flags"]["png"])
-  return (
+  const [searchQuery, SetSearchQuery]=useState("")
+  const [RegionQuery, SetRegionQuery]=useState("")
+  const [dataProject, SetDataProject]=useState([])
+ 
+  const filteredItems = useMemo(() => {
+    return dataProject.filter(item => {
+      return (item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      &&  RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
+      )
+     
+    })
+    },[dataProject,RegionQuery,searchQuery]) 
+
+
+ /*    useEffect(()=>{
+      const fetchData = async () => {
+        let response = await fetch(https://restcountries.com);
+        let data= await response.json();
+        console.log(data)
+      };
     
+      fetchData(); // run it, run it
+    
+      return () => {
+        // this now gets called when the component unmounts
+      };
+
+    },[]) */
+
+
+
+  console.log("searchQuery", searchQuery,"RegionQuery", RegionQuery)
+  return (
+    <Box mt={20} >
+       <form>
+      <Flex py="0.99em" alignItems="center" margin="auto" mb="1.0em" width="84.5%" justifyContent="space-between" >
+      
+      <Box><InputGroup>
+            <Input
+            placeholder="Search for country..."
+            name="search_bar"
+            value={searchQuery}
+            onChange={(e)=>
+            SetSearchQuery(e.target.value)
+            }
+            size="md"
+            htmlSize={50}
+            width='auto' 
+              />
+
+        <InputLeftElement  children={<Search2Icon/>}/>
+      </InputGroup>
+      </Box>
+      <Spacer/>
+      <Box>
+      <Select value={RegionQuery} 
+              onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
+              <option value=''>Africa</option>
+              <option value='America'>America</option>
+              <option value='Asia'>Asia</option>
+              <option value='Europe'>Europe</option>
+              <option value='OCeania'>OCeania</option>
+      </Select>
+      </Box>
+      </Flex>
+      </form>
     <FullScreenSection
       backgroundColor="white"
       isDarkBackground
       justifyContent="center"
       alignItems="flex-start"
       spacing={8}
-      pt="4.0em"
+      
       textAlign="left"
     >
-      <Heading as="h1" id="projects-section" >
-        Featured Projects
-      </Heading>
+    
+     
+      
       <Box
         display="grid"
         gridTemplateColumns="repeat(4,minmax(0,1fr))"
@@ -66,6 +134,7 @@ const ProjectsSection = () => {
         ))}
       </Box>
     </FullScreenSection>
+    </Box>
   );
 };
 

@@ -28,7 +28,7 @@ const Cards = ({ title, description, imageSrc,population,name,region,capital }) 
             //noOfLines={1}
           >
             <Text pr={1}> Population : </Text>
-            <Text fontWeight="light">  { population } </Text>
+            <Text fontWeight="light">  { population.toLocaleString() } </Text>
           </Box>
        
 

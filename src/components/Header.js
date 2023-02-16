@@ -7,7 +7,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack,Link } from "@chakra-ui/react";
+import { Box, HStack,Link,Flex,Spacer } from "@chakra-ui/react";
 
 const socials = [
   {
@@ -111,6 +111,7 @@ const Projects="projects"
           </nav>
         </HStack>
       </Box>
+ 
     </Box>
   );
 };

@@ -13,7 +13,6 @@ function App() {
       <AlertProvider>
         <main>
           <Header />
-          
           <ProjectsSection />
           <Footer />
           <Alert />

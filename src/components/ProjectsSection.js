@@ -53,24 +53,27 @@ const ProjectsSection = () => {
 
 const baseURL= "https://restcountries.com/v2/all";
 
-console.log(filteredItems)
+console.log("subregion",JSON.stringify( filteredItems[1]))
 
 
 
   useEffect(()=>{
       const fetchData = () => {
-       /*  let response = fetch('https://restcountries.com/v3.1/all');
-        let data= response.json()
-        console.log(data) */
-        axios.get(baseURL)
-        .then((response) => {
-          SetDataProject( response.data);
-        })
-        .catch(error => {
-          setError(error);
-        });
-        ;
+       
+        const FetchData=async (baseURL)=>{
+         try {
+          let response= await axios.get(baseURL)
+          let data=await response.data
+          SetDataProject( data)
+         } catch (error) {
+          
+         } 
+        }
+       
+        FetchData(baseURL);
+return ()=>{
 
+}
 
       };
     
@@ -84,7 +87,7 @@ console.log(filteredItems)
 
 
 
-  console.log("searchQuery", searchQuery,"RegionQuery", RegionQuery)
+  
   return (
     <Box mt={20} width="90%" mx="auto"  minHeight="100vh">
        <form>

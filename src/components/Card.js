@@ -37,22 +37,138 @@ const Cards = ({ title, description, imageSrc,population,name,region,capital }) 
           fontWeight="normal"
           as='h4'
           lineHeight='tight'
-          noOfLines={1}>
-         <Text> Region : {region} </Text>
+          display='flex' 
+          alignItems='baseline'
+          //noOfLines={1}
+          >
+             <Text pr={1}> Region : </Text>
+         <Text fontWeight="light">  {region} </Text>
         </Box>
         <Box
          
           fontWeight="normal"
           as='h4'
           lineHeight='tight'
-          noOfLines={1}>
-         <Text> Captial : {capital} </Text>
+          display='flex' 
+          alignItems='baseline'
+          //noOfLines={1}
+          >
+            <Text pr={1}> Captial : </Text>
+         <Text  fontWeight="light">  {capital} </Text>
         </Box>
       </Box>
       </Box>
     </Box>
 </>)
 };
+
+
+
+
+export function DetialCard({name,imageSrc,languages,subregion}) {
+  return (
+    <Card
+  direction={{ base: 'column', sm: 'row' }}
+  overflow='hidden'
+  variant='outline'
+>
+  <Image
+    objectFit='cover'
+    maxW={{ base: '100%', sm: '200px' }}
+    src={imageSrc}
+    alt={name}
+  />
+
+  <Stack>
+    <CardBody>
+      <Heading size='md'>{name}</Heading>
+
+      <Box
+         
+          fontWeight="normal"
+          as='h4'
+          lineHeight='tight'
+          display='flex' 
+          alignItems='baseline'
+          py={2}
+          //noOfLines={1}
+          >
+            <Text pr={1}> Native Name : </Text>
+         <Text  fontWeight="light">  {languages[0].nativeName} </Text>
+        </Box>
+        <Box
+          
+          fontWeight="normal"
+          as='h4'
+          lineHeight='tight'
+          display='flex' 
+          alignItems='baseline'
+          //noOfLines={1}
+        >
+          <Text pr={1}> Population : </Text>
+          <Text fontWeight="light">  { population.toLocaleString() } </Text>
+        </Box>
+        <Box
+         
+         fontWeight="normal"
+         as='h4'
+         lineHeight='tight'
+         display='flex' 
+         alignItems='baseline'
+         //noOfLines={1}
+         >
+            <Text pr={1}> Region : </Text>
+        <Text fontWeight="light">  {region} </Text>
+       </Box>
+       <Box
+         
+         fontWeight="normal"
+         as='h4'
+         lineHeight='tight'
+         display='flex' 
+         alignItems='baseline'
+         //noOfLines={1}
+         >
+            <Text pr={1}>Sub Region : </Text>
+        <Text fontWeight="light">   </Text>
+       </Box>
+       <Box
+         
+         fontWeight="normal"
+         as='h4'
+         lineHeight='tight'
+         display='flex' 
+         alignItems='baseline'
+         //noOfLines={1}
+         >
+            <Text pr={1}>Top Level Domain : </Text>
+        <Text fontWeight="light">  {topLevelDomain} </Text>
+       </Box>
+       <Box
+         
+         fontWeight="normal"
+         as='h4'
+         lineHeight='tight'
+         display='flex' 
+         alignItems='baseline'
+         //noOfLines={1}
+         >
+            <Text pr={1}>currencies : </Text>
+        <Text fontWeight="light">  {topLevelDomain} </Text>
+       </Box>
+    </CardBody>
+
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue'>
+        Buy Latte
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+  )
+}
+
+
 
 export default Cards;
 

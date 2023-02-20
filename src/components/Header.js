@@ -8,6 +8,7 @@ import {
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack,Link,Flex,Spacer } from "@chakra-ui/react";
+import { Outlet } from "react-router-dom";
 
 const socials = [
   {
@@ -85,6 +86,7 @@ const Projects="projects"
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
       ref={refHeader}
+    
     >
       <Box color="white" w="100%" margin="0 auto">
         <HStack
@@ -92,6 +94,9 @@ const Projects="projects"
           py={4}
           justifyContent="space-between"
           alignItems="center"
+          borderBottomWidth="1px"
+          borderBottomColor="white"
+
         >
           
           <nav>
@@ -111,7 +116,7 @@ const Projects="projects"
           </nav>
         </HStack>
       </Box>
- 
+              <Outlet/>
     </Box>
   );
 };

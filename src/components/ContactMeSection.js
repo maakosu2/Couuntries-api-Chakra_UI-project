@@ -13,7 +13,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
-import useSubmit from "../hooks/useSubmit";
+import useSubmit from "../hooks/useFetch";
 import {useAlertContext} from "../context/alertContext";
 
 const ContactMeSection = () => {

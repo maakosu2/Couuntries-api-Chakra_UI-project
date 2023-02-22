@@ -3,9 +3,11 @@ import axios from "axios";
 import FullScreenSection from "./FullScreenSection";
 import {Search2Icon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
-import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select} from "@chakra-ui/react";
-import Cards from "./Card";
+import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select, Spinner, Center} from "@chakra-ui/react";
+import Cards, { DetialCard } from "./Card";
 import project from "./data" 
+import useCountryFilter from "../hooks/useCountryFilter";
+import useFetch from "../hooks/useFetch";
 
 const projects = [
   {
@@ -37,11 +39,16 @@ const projects = [
 
 
 const ProjectsSection = () => {
+  const [isLoading, SetisLoading]=useState(false)
   const [searchQuery, SetSearchQuery]=useState("")
   const [RegionQuery, SetRegionQuery]=useState("")
   const [dataProject, SetDataProject]=useState([])
  
-  const filteredItems = useMemo(() => {
+  const filteredItems =useCountryFilter(searchQuery,RegionQuery,dataProject)
+ 
+  const [StateOp]=useCountryFilter(searchQuery,"",dataProject)
+
+  /*  useMemo(() => {
     return dataProject.filter(item => {
       return (
         (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -49,18 +56,22 @@ const ProjectsSection = () => {
       ))
      
     })
-    },[dataProject,RegionQuery,searchQuery]) 
+    },[dataProject,RegionQuery,searchQuery])  */
+
+    //https://restcountries.com/v2/name/{name}
+//https://restcountries.com/v2/name/peru
 
 const baseURL= "https://restcountries.com/v2/all";
-
-console.log("subregion",JSON.stringify( filteredItems[1]))
+//const {response,isError} =useFetch(baseURL)
+console.log("subregion", StateOp)
 
 
 
   useEffect(()=>{
-      const fetchData = () => {
+     
        
         const FetchData=async (baseURL)=>{
+          SetisLoading(true)
          try {
           let response= await axios.get(baseURL)
           let data=await response.data
@@ -68,16 +79,15 @@ console.log("subregion",JSON.stringify( filteredItems[1]))
          } catch (error) {
           
          } 
+         finally{
+          SetisLoading(false)
+         }
         }
-       
-        FetchData(baseURL);
-return ()=>{
+      FetchData(baseURL) ; // run it, run it
+      //const {response,isLoading,isError}=useFetch(baseURL)
 
-}
-
-      };
-    
-      fetchData(); // run it, run it
+      
+        
     
       return () => {
         // this now gets called when the component unmounts
@@ -85,7 +95,13 @@ return ()=>{
 
     },[])
 
-
+   /*  {JSON.stringify(filteredItems[0]["subregion"])}
+    {JSON.stringify(filteredItems[21]["nativeName"])} returns a string value
+    {JSON.stringify(filteredItems[21])} 
+     {JSON.stringify(filteredItems[0]["topLevelDomain"][0])}
+      {JSON.stringify(filteredItems[21]["languages"])}  // returns a list of array
+      {JSON.stringify(filteredItems[21]["borders"])}// return a list element
+     */
 
   
   return (
@@ -124,7 +140,15 @@ return ()=>{
       </Flex>
       </form>
  
-    
+    {isLoading? <Center  h='100vh' color='black'>
+      <Spinner
+       thickness='4px'
+       speed='0.65s'
+       emptyColor='gray.200'
+       color='blue.500'
+       size='xl'
+       label="Loading..."  />
+      </Center>:
      
       
       <Box
@@ -132,7 +156,16 @@ return ()=>{
         gridTemplateColumns="repeat(4,minmax(0,1fr))"
         gridGap={6}
       >
+       
         {filteredItems.map((project) => (
+          isLoading? <Center  h='100vh' color='black'>
+      <Spinner   thickness='4px'
+       label="Loading..." 
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'/>
+      </Center>:
           
           <Cards
             key={project.flags.png}
@@ -142,10 +175,11 @@ return ()=>{
             name={project.name}
             region={project.region}
             capital={project.capital}
-          />
+          /> 
+         
         ))}
-      </Box>
-    
+      </Box>}
+      
     </Box>
   );
 };

@@ -10,9 +10,9 @@ const Cards = ({ title, description, imageSrc,population,name,region,capital }) 
   // Feel free to import other UI components from Chakra UI if you wish to.
   return(<>
   <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' >
-     <Box>
-      <AspectRatio maxW='400px' ratio={8 / 4}>
-      <Image src={imageSrc} alt={name}  objectFit='cover'/>
+     <Box borderWidth="thin">
+      <AspectRatio maxW='400px' ratio={8/ 5}>
+      <Image src={imageSrc} alt={name}  objectFit="contain"  />
       </AspectRatio>
       </Box>
       <Box p='6' bgColor="white" >

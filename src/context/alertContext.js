@@ -1,20 +1,26 @@
 import {createContext, useContext, useState} from "react";
+import { useQuery } from "react-query";
+import usequeryFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 
 const FetctDataContext = createContext(undefined);
 
 export const FetctDataProvider = ({ children }) => {
  
-  const [response, setResponse] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-  const [isNotAvailableData, setisNotAvailableData] = useState(false);
+  
+  const [isDark, setDark] = useState(false);
+  const [searchQuery, SetSearchQuery]=useState("")
+  const [RegionQuery, SetRegionQuery]=useState("")
 
   return (
     <FetctDataContext.Provider
       value={{
-        data:()=>response,
-        SetData: (data) => setResponse(data),
-        onClose: () => setState({ isOpen: false, type: '', message: '' }),
+        colorValue:()=>isDark,
+        colorSet:()=>setDark,
+        searchQuery:()=>searchQuery,
+        SetSearchQuery:()=>SetSearchQuery,
+        RegionQuery:()=>RegionQuery,
+        SetRegionQuery:()=>SetRegionQuery,
       }}
     >
       {children}
@@ -22,4 +28,4 @@ export const FetctDataProvider = ({ children }) => {
   );
 };
 
-export const useAlertContext = () => useContext(FetctDataContext);
+export const useFetchDataContext = () => useContext(FetctDataContext);

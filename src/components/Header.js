@@ -1,37 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faCloudMoon, faEnvelope, faMoon } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faLinkedin,
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack,Link,Flex,Spacer } from "@chakra-ui/react";
+import { Box, HStack,Link,Flex,Spacer,Text,Icon } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
+import { MoonIcon } from "@chakra-ui/icons";
+import Footer from "./Footer";
+import { useFetchDataContext } from "../context/alertContext";
 
-const socials = [
-  {
-    icon: faEnvelope,
-    url: "mailto: hello@example.com",
-  },
-  {
-    icon: faGithub,
-    url: "https://github.com",
-  },
-  {
-    icon: faLinkedin,
-    url: "https://www.linkedin.com",
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
-  },
-  {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
-  },
-];
+
 
 const Header = () => {
   const refHeader=useRef(null)
@@ -70,12 +52,11 @@ const Header = () => {
     };
   }, [prevScrollPos]);
 
-  // LInk ID for section  variables 
-const Contact_me="contactme"
-const Projects="projects"
+
 
   return (
-    <Box
+    <Box>
+    <Box  
       position="fixed"
       top={0}
       left={0}
@@ -100,23 +81,21 @@ const Projects="projects"
         >
           
           <nav>
-            {socials.map(({icon,url})=>{return (
-    <Link href={`${url}`} px={2}>
-    <FontAwesomeIcon icon={icon} size="2x"/></Link>
-  )})}
-          
+            <Text>Where in the World?</Text>
             {/* Add social media links based on the `socials` data */}
           </nav>
           <nav>
-            <HStack spacing={8}>
-
-              <Link  onClick={handleClick(Contact_me)}> Contact Me</Link>
-              <Link onClick={handleClick(Projects)}> Projects</Link>
+            <HStack spacing={8}  >
+            <Link onClick={()=>console.log("mande") } >
+            <Icon as={MoonIcon} color="blue" />   </Link><Text>Dark Mode</Text>
             </HStack>
           </nav>
         </HStack>
       </Box>
-              <Outlet/>
+              
+    </Box>
+    <Outlet/>
+    <Footer/>
     </Box>
   );
 };

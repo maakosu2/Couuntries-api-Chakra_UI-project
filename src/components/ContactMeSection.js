@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import useSubmit from "../hooks/useFetch";
-import {useAlertContext} from "../context/alertContext";
+import {useFetchDataContext} from "../context/alertContext";
 
 const ContactMeSection = () => {
   const {isLoading, response, submit} = useSubmit();

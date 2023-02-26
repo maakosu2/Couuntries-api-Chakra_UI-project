@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useMemo } from "react";
 import axios from "axios";
+import { useQuery } from "react-query";
 import FullScreenSection from "./FullScreenSection";
 import {Search2Icon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
@@ -7,48 +8,25 @@ import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select, S
 import Cards, { DetialCard } from "./Card";
 import project from "./data" 
 import useCountryFilter from "../hooks/useCountryFilter";
-import useFetch from "../hooks/useFetch";
+import usequeryFetch ,{useFetch}from "../hooks/useFetch";
 
-const projects = [
-  {
-    title: "React Space",
-    description:
-      "Handy tool belt to create amazing AR components in a React app, with redux integration via middleware️",
-    getImageSrc: () => require("../images/photo1.jpg"),
-  },
-  {
-    title: "React Infinite Scroll",
-    description:
-      "A scrollable bottom sheet with virtualisation support, native animations at 60 FPS and fully implemented in JS land 🔥️",
-    getImageSrc: () => require("../images/photo2.jpg"),
-  },
-  {
-    title: "Photo Gallery",
-    description:
-      "A One-stop shop for photographers to share and monetize their photos, allowing them to have a second source of income",
-    getImageSrc: () => require("../images/photo3.jpg"),
-  },
-  {
-    title: "Event planner",
-    description:
-      "A mobile application for leisure seekers to discover unique events and activities in their city with a few taps",
-    getImageSrc: () => require("../images/photo4.jpg"),
-  },
-];
+
 
 
 
 const ProjectsSection = () => {
-  const [isLoading, SetisLoading]=useState(false)
+ 
   const [searchQuery, SetSearchQuery]=useState("")
   const [RegionQuery, SetRegionQuery]=useState("")
-  const [dataProject, SetDataProject]=useState([])
- 
-  const filteredItems =useCountryFilter(searchQuery,RegionQuery,dataProject)
- 
-  const [StateOp]=useCountryFilter(searchQuery,"",dataProject)
 
-  /*  useMemo(() => {
+  const baseURL= "https://restcountries.com/v2/all";
+
+  const {isLoading, data, isError,error}=usequeryFetch(baseURL,searchQuery,RegionQuery)
+  console.log("nnn",isLoading)
+  //const filteredItems =useCountryFilter(searchQuery,RegionQuery,dataProject)
+  /*  
+  useMemo with dependance to filter the data for country and region
+  useMemo(() => {
     return dataProject.filter(item => {
       return (
         (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -58,43 +36,6 @@ const ProjectsSection = () => {
     })
     },[dataProject,RegionQuery,searchQuery])  */
 
-    //https://restcountries.com/v2/name/{name}
-//https://restcountries.com/v2/name/peru
-
-const baseURL= "https://restcountries.com/v2/all";
-//const {response,isError} =useFetch(baseURL)
-console.log("subregion", StateOp)
-
-
-
-  useEffect(()=>{
-     
-       
-        const FetchData=async (baseURL)=>{
-          SetisLoading(true)
-         try {
-          let response= await axios.get(baseURL)
-          let data=await response.data
-          SetDataProject( data)
-         } catch (error) {
-          
-         } 
-         finally{
-          SetisLoading(false)
-         }
-        }
-      FetchData(baseURL) ; // run it, run it
-      //const {response,isLoading,isError}=useFetch(baseURL)
-
-      
-        
-    
-      return () => {
-        // this now gets called when the component unmounts
-      };
-
-    },[])
-
    /*  {JSON.stringify(filteredItems[0]["subregion"])}
     {JSON.stringify(filteredItems[21]["nativeName"])} returns a string value
     {JSON.stringify(filteredItems[21])} 
@@ -103,7 +44,6 @@ console.log("subregion", StateOp)
       {JSON.stringify(filteredItems[21]["borders"])}// return a list element
      */
 
-  
   return (
     <Box mt={20} width="90%" mx="auto"  minHeight="100vh">
        <form>
@@ -157,7 +97,7 @@ console.log("subregion", StateOp)
         gridGap={6}
       >
        
-        {filteredItems.map((project) => (
+        {data?.map((project) => (
           isLoading? <Center  h='100vh' color='black'>
       <Spinner   thickness='4px'
        label="Loading..." 

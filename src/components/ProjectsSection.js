@@ -1,14 +1,13 @@
-import React, { useEffect, useState,useMemo } from "react";
-import axios from "axios";
-import { useQuery } from "react-query";
-import FullScreenSection from "./FullScreenSection";
+import React, { useState,useMemo } from "react";
+
 import {Search2Icon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
 import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select, Spinner, Center} from "@chakra-ui/react";
 import Cards, { DetialCard } from "./Card";
 import project from "./data" 
 import useCountryFilter from "../hooks/useCountryFilter";
-import usequeryFetch ,{useFetch}from "../hooks/useFetch";
+import usequeryFetch ,{useFetch}from "../hooks/usequeryFetch";
+import { useFetchDataContext } from "../context/alertContext";
 
 
 
@@ -22,35 +21,31 @@ const ProjectsSection = () => {
   const baseURL= "https://restcountries.com/v2/all";
 
   const {isLoading, data, isError,error}=usequeryFetch(baseURL,searchQuery,RegionQuery)
-  console.log("nnn",isLoading)
-  //const filteredItems =useCountryFilter(searchQuery,RegionQuery,dataProject)
-  /*  
-  useMemo with dependance to filter the data for country and region
-  useMemo(() => {
-    return dataProject.filter(item => {
-      return (
-        (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
-     &&  (RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
-      ))
-     
-    })
-    },[dataProject,RegionQuery,searchQuery])  */
+  
+  const {colorValue}=useFetchDataContext()
 
-   /*  {JSON.stringify(filteredItems[0]["subregion"])}
-    {JSON.stringify(filteredItems[21]["nativeName"])} returns a string value
-    {JSON.stringify(filteredItems[21])} 
-     {JSON.stringify(filteredItems[0]["topLevelDomain"][0])}
-      {JSON.stringify(filteredItems[21]["languages"])}  // returns a list of array
-      {JSON.stringify(filteredItems[21]["borders"])}// return a list element
-     */
 
+// the filter is implemented outside of the fectch method is prevent exceeds callls to the API
+// the filtered data has is implement in the page as a non-funtion so the useMemo hooks can be invoke 
+  const filtered= useMemo(()=>data?.filter(item => {
+    return (
+      (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+   &&  (RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
+    ))
+   
+  }) )
+  console.log("nnnnui",filtered )
+   
+      const WhiteColor="white";
+      const BlackColor="#202631"
   return (
-    <Box mt={20} width="90%" mx="auto"  minHeight="100vh">
+    <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} py="15px">
+    <Box pt={20} width="90%" mx="auto"  minHeight="91svh">
        <form>
       <Flex  alignItems="center"  my="0.95em"  justifyContent="space-between" >
       
       <Box><InputGroup>
-            <Input
+            <Input color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}
             placeholder="Search for country..."
             name="search_bar"
             value={searchQuery}
@@ -66,8 +61,8 @@ const ProjectsSection = () => {
       </InputGroup>
       </Box>
       <Spacer/>
-      <Box>
-      <Select value={RegionQuery} 
+      <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
+      <Select value={RegionQuery}  bgColor={`${colorValue?"white":`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:"white"} `}
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
             
               <option value='Africa'>Africa</option>
@@ -97,7 +92,7 @@ const ProjectsSection = () => {
         gridGap={6}
       >
        
-        {data?.map((project) => (
+        {filtered.map((project) => (
           isLoading? <Center  h='100vh' color='black'>
       <Spinner   thickness='4px'
        label="Loading..." 
@@ -115,11 +110,13 @@ const ProjectsSection = () => {
             name={project.name}
             region={project.region}
             capital={project.capital}
+            alpha3Code={project.alpha3Code}
           /> 
          
         ))}
       </Box>}
       
+    </Box>
     </Box>
   );
 };

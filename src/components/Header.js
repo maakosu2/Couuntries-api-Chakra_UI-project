@@ -51,11 +51,11 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
-
-
+const {colorValue,colorSet}=useFetchDataContext()
+const rod=false;
 
   return (
-    <Box>
+    <Box  as="flex" dir="column" justifyContent="space-between" >
     <Box  
       position="fixed"
       top={0}
@@ -65,19 +65,15 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"
       ref={refHeader}
     
     >
-      <Box color="white" w="100%" margin="0 auto">
+      <Box  bgColor={`${colorValue?"white":"#232a30"} `}    color={`${colorValue?"black":"white"} `} w="100%" margin="0 auto">
         <HStack
           px={16}
           py={4}
           justifyContent="space-between"
           alignItems="center"
-          borderBottomWidth="1px"
-          borderBottomColor="white"
-
         >
           
           <nav>
@@ -85,9 +81,12 @@ const Header = () => {
             {/* Add social media links based on the `socials` data */}
           </nav>
           <nav>
-            <HStack spacing={8}  >
-            <Link onClick={()=>console.log("mande") } >
-            <Icon as={MoonIcon} color="blue" />   </Link><Text>Dark Mode</Text>
+            <HStack spacing={2}  >
+            <Link  >
+            <Box    onClick={()=>{
+             colorSet((prevoius)=>!prevoius)
+            } }>
+            <Icon as={MoonIcon}  color={`${colorValue?"blue":"white"} `}     />  </Box> </Link><Text>Dark Mode</Text>
             </HStack>
           </nav>
         </HStack>

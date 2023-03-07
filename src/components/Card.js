@@ -2,20 +2,26 @@ import { Heading, AspectRatio, HStack,Box, Image, Text, VStack,Stack,Card, CardH
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useFetchDataContext } from "../context/alertContext";
 
-const Cards = ({ title, description, imageSrc,population,name,region,capital }) => {
-  // Implement the UI for the Card component according to the instructions.
-  // You should be able to implement the component with the elements imported above.
-  // Feel free to import other UI components from Chakra UI if you wish to.
+const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) => {
+ 
+
+  //
+  const WhiteColor="white";
+ const BlackColor="#202631"
+ 
+  const {colorValue}=useFetchDataContext()
   return(<>
-  <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' >
+  <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' key={name}>
+    <Link to={`/${alpha3Code}`}>
      <Box borderWidth="thin">
-      <AspectRatio maxW='400px' ratio={8/ 5}>
-      <Image src={imageSrc} alt={name}  objectFit="contain"  />
+      <AspectRatio maxW='400px' ratio={9/ 5.7}>
+      <Image src={imageSrc} alt={name}  objectFit="fill"  />
       </AspectRatio>
       </Box>
-      <Box p='6' bgColor="white" >
+      <Box p='6' bgColor={`${colorValue?`${ WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${ WhiteColor}`} `}>
         <Box display='flex'  flexDirection="column">
           <Box  mb="2" noOfLines={1}>
              <Heading size='sm'>{title}</Heading>
@@ -61,6 +67,7 @@ const Cards = ({ title, description, imageSrc,population,name,region,capital }) 
         </Box>
       </Box>
       </Box>
+      </Link>
     </Box>
 </>)
 };

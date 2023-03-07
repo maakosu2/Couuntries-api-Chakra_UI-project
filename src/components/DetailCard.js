@@ -3,33 +3,24 @@ import { useParams,useNavigate } from "react-router-dom"
 import {Box, Image, Text, VStack,Stack,Card, CardHeader, CardBody, CardFooter,Divider,Button,ButtonGroup, Center, Flex } from "@chakra-ui/react";
 import DetialComponent from "./DetialComponent";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { useFetchDataContext } from "../context/alertContext";
+import usequeryFetch from "../hooks/usequeryFetch";
 
-export default function DetailCard({name,imageSrc,languages,subregion}) {
-    const {id}=useParams()
-    const navigate=useNavigate()
-    const navigateHomePage=()=>{
-        navigate("/")
-    }
+export default function DetailCard() {
+    
+    const {countryName}=useParams()
+    const BaseUrl=`https://restcountries.com/v2/alpha?codes=${countryName}`
+    const {searchQuery,colorValue}=useFetchDataContext()
+    const {isLoading,isError, data}=usequeryFetch(BaseUrl,countryName)
+   console.log("detailPage",isLoading)
+   if (isLoading) {
+    return <h1>mandela</h1>
+   }
+
     return (
-      <Box color="red"   minH="91dvh"   py={100}>
-       <Button size="sm" w="100px" colorScheme='blue' ml="5%" mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color="red"/>} >Button</Button>
-        
-        <Box   m="0 auto"  width="90%"  h="322px" borderWidth="2px"    >
-         
-          <Stack flexDirection="row" >
-            <Box mr={40}>
-    <Image
-      objectFit='cover'
-      w='500px'
-      h="320px"
-      src={"https://flagcdn.com/w320/ax.png"}
-      alt='Caffe Latte'
-    /></Box  >
-    <DetialComponent/>
-  </Stack>
-  </Box>
-
-  </Box>
+      
+    <DetialComponent  colorValue={colorValue} {...data[0]} />
+ 
     )
   }
   

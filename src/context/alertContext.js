@@ -1,7 +1,7 @@
 import {createContext, useContext, useState} from "react";
 import { useQuery } from "react-query";
-import usequeryFetch from "../hooks/useFetch";
-import useFetch from "../hooks/useFetch";
+import usequeryFetch from "../hooks/usequeryFetch";
+import useFetch from "../hooks/usequeryFetch";
 
 const FetctDataContext = createContext(undefined);
 
@@ -15,12 +15,12 @@ export const FetctDataProvider = ({ children }) => {
   return (
     <FetctDataContext.Provider
       value={{
-        colorValue:()=>isDark,
-        colorSet:()=>setDark,
-        searchQuery:()=>searchQuery,
-        SetSearchQuery:()=>SetSearchQuery,
-        RegionQuery:()=>RegionQuery,
-        SetRegionQuery:()=>SetRegionQuery,
+        colorValue:isDark,
+        colorSet:setDark,
+        searchQuery:searchQuery,
+        SetSearchQuery:SetSearchQuery,
+        RegionQuery:RegionQuery,
+        SetRegionQuery:SetRegionQuery,
       }}
     >
       {children}

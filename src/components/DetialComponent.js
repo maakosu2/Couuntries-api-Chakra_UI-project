@@ -5,7 +5,7 @@ import usequeryFetch from '../hooks/usequeryFetch';
 import { useParams,useNavigate, Link } from "react-router-dom"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
-export default function DetialComponent({country_Name,topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
+export default function DetialComponent({Code_Name,topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
 
 }) {
   const navigate=useNavigate()
@@ -156,16 +156,20 @@ export default function DetialComponent({country_Name,topLevelDomain,nativeName,
         </VStack>
 
         </Stack >
-        <HStack spacing={4}  py={10}>
+        <HStack spacing={4}  py={5} alignItems="center">
+
+          <Box  minW="140px"   alignSelf="flex-start">
             <Text>Border Countries:</Text>
-
+            </Box>
+            <Box  maxW="550px">
+      <Flex alignItems="flex-start"   wrap="wrap"  justify="flex-start"  >
         {
-
           borders?.map(item=>
-          <Button size="sm" w="100px" as={Link} boxShadow='1px 0px 1.1px 0.1px ' to={`/${item}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} ml="1%" mb={10}  >{item}</Button>
+          <Button size="sm" w="120px"  as={Link}  boxShadow='1px 0px 1.1px 0.1px ' to={`/${item}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} text-overflow="ellipsis"  overflow="hidden" color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} ml={2} mb={2}  mt={2}><Text overflow="hidden"  text-overflow="ellipsis">{`${Code_Name(item)}`}</Text></Button>
           )
         }
-        
+        </Flex>
+        </Box>
         </HStack>
         </Stack>
         </Stack>

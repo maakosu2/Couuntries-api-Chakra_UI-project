@@ -15,6 +15,19 @@ export default function DetailCard() {
     const BaseUrl=`https://restcountries.com/v2/alpha?codes=${countryName}`
     const {searchQuery,colorValue}=useFetchDataContext()
     const {isLoading,isError, data}=usequeryFetch(BaseUrl,countryName)
+
+    const Code_Name=(countryName)=>{
+      const BaseUrl=`https://restcountries.com/v2/alpha?codes=${countryName}`
+      const {isLoading,isError,  data}=usequeryFetch(BaseUrl,countryName)
+      if (isLoading) {
+        return "isLoading"
+      } else if (isError) {
+        return "Error"
+      } else {
+       return data[0]["name"]
+      } 
+      
+    }
    
    if (isLoading) {
     return(
@@ -24,7 +37,7 @@ export default function DetailCard() {
 
     return (
       
-    <DetialComponent  colorValue={colorValue} {...data[0]} />
+    <DetialComponent Code_Name={Code_Name} colorValue={colorValue} {...data[0]} />
  
     )
   }

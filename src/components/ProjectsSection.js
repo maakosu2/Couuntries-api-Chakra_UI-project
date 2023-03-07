@@ -8,6 +8,7 @@ import project from "./data"
 import useCountryFilter from "../hooks/useCountryFilter";
 import usequeryFetch ,{useFetch}from "../hooks/usequeryFetch";
 import { useFetchDataContext } from "../context/alertContext";
+import Loading from "./LoadingComponent";
 
 
 
@@ -93,14 +94,9 @@ const ProjectsSection = () => {
       >
        
         {filtered.map((project) => (
-          isLoading? <Center  h='100vh' color='black'>
-      <Spinner   thickness='4px'
-       label="Loading..." 
-  speed='0.65s'
-  emptyColor='gray.200'
-  color='blue.500'
-  size='xl'/>
-      </Center>:
+          isLoading? 
+          <Loading/>
+          :
           
           <Cards
             key={project.flags.png}

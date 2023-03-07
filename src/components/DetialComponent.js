@@ -2,10 +2,10 @@ import React from 'react'
 import { Heading, AspectRatio, HStack,Box, Image, Text, VStack,Stack,Card, CardHeader, CardBody, CardFooter,Divider,Button,ButtonGroup, Center, Flex } from "@chakra-ui/react";
 import { useFetchDataContext } from '../context/alertContext';
 import usequeryFetch from '../hooks/usequeryFetch';
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams,useNavigate, Link } from "react-router-dom"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
-export default function DetialComponent({topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
+export default function DetialComponent({country_Name,topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
 
 }) {
   const navigate=useNavigate()
@@ -15,10 +15,9 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
  const WhiteColor="white";
  const BlackColor="#202631"
   const {colorValue}=useFetchDataContext()
-  console.log("propslan",borders
-  )
+ 
   return (
-    <Box   minH="91dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
+    <Box   minH="93dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
     <Button size="sm" w="100px"  boxShadow='1px 0px 1.1px 0.1px '    bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}     ml="5%" mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"  h="322px"    >
@@ -163,7 +162,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
         {
 
           borders?.map(item=>
-          <Button size="sm" w="100px"  boxShadow='1px 0px 1.1px 0.1px '   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} ml="1%" mb={10}  >{item}</Button>
+          <Button size="sm" w="100px" as={Link} boxShadow='1px 0px 1.1px 0.1px ' to={`/${item}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} ml="1%" mb={10}  >{item}</Button>
           )
         }
         

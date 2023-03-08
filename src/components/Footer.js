@@ -14,7 +14,7 @@ const Footer = () => {
           w="100%"
           height={16}
         >
-          <p>Pete • © 2022</p>
+          <p>Akosu• © 2023</p>
         </Flex>
       </footer>
     </Box>

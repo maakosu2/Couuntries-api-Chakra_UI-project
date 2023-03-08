@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Header from "./components/Header";
-import ProjectsSection from "./components/ProjectsSection";
+import ProjectsSection from "./components/MainPage";
 import { QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import { BrowserRouter, Route,Routes } from "react-router-dom";
 import DetailCard from "./components/DetailCard";

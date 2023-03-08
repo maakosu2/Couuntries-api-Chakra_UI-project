@@ -4,8 +4,10 @@ import { useFetchDataContext } from '../context/alertContext';
 import usequeryFetch from '../hooks/usequeryFetch';
 import { useParams,useNavigate, Link } from "react-router-dom"
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import BorderCountry from './BorderContryComponment';
 
-export default function DetialComponent({Code_Name,topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
+
+export default function DetialComponent({topLevelDomain,nativeName,name,population,region,subregion,borders,capital,currencies,languages,flag
 
 }) {
   const navigate=useNavigate()
@@ -15,10 +17,13 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
  const WhiteColor="white";
  const BlackColor="#202631"
   const {colorValue}=useFetchDataContext()
+
+  const WhiteColorButton="white.100"
+      const BlackColorButton="#202621"
  
   return (
     <Box   minH="93dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-    <Button size="sm" w="100px"  boxShadow='1px 0px 1.1px 0.1px '    bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}     ml="5%" mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}/>} >Button</Button>
+    <Button size="sm" w="100px"  boxShadow='1px 0px 1.1px 0.1px '    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml="5%" mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"  h="322px"    >
       
@@ -111,7 +116,7 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
         </Box>
         </VStack>
         <VStack>
-        <Box  w="350px"  borderColor="blue"
+        <Box  w="450px"  borderColor="blue"
           
           fontWeight="normal"
           as='h4'
@@ -123,7 +128,7 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
           <Text pr={1}> Top Level Domain : </Text>
           <Text fontWeight="light"> {topLevelDomain[0]}</Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"
+        <Box  w="450px"  borderColor="blue"
           
           fontWeight="normal"
           as='h4'
@@ -135,7 +140,7 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
           <Text pr={1}> Curriences : </Text>
           <Text fontWeight="light">{currencies[0]["code"]} </Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"
+        <Box  w="450px"  borderColor="blue"
           
           fontWeight="normal"
           as='h4'
@@ -147,7 +152,7 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
           <Text pr={1}> Languages : </Text>
           {
             languages.map(item=>{
-              return <Text px="2px" fontWeight="light"> {`${item.name} `}</Text>
+              return <Text  key={`${item.name}`} px="2px" fontWeight="light"> {`${item.name} `}</Text>
             })
             
           }
@@ -159,14 +164,14 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
         <HStack spacing={4}  py={5} alignItems="center">
 
           <Box  minW="140px"   alignSelf="flex-start">
-            <Text>Border Countries:</Text>
+            <Text pt={1}>Border Countries:</Text>
             </Box>
             <Box  maxW="550px">
       <Flex alignItems="flex-start"   wrap="wrap"  justify="flex-start"  >
         {
           borders?.map(item=>
-          <Button size="sm" w="120px"  as={Link}  boxShadow='1px 0px 1.1px 0.1px ' to={`/${item}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} text-overflow="ellipsis"  overflow="hidden" color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} ml={2} mb={2}  mt={2}><Text overflow="hidden"  text-overflow="ellipsis">{`${Code_Name(item)}`}</Text></Button>
-          )
+         <BorderCountry key={item}  countryName= {item}/>
+          ) 
         }
         </Flex>
         </Box>
@@ -178,3 +183,12 @@ export default function DetialComponent({Code_Name,topLevelDomain,nativeName,nam
   </Box>
   )
 }
+// to solve the problem of few hoooks called, the button componet needs to be rewritern as a component
+// called as a component element the link the defined this process is given 
+// https://kentcdodds.com/blog/dont-call-a-react-function-component
+
+
+{/* <Button size="sm" w="120px"  as={Link}  boxShadow='1px 0px 1.1px 0.1px '
+           to={`/${item}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} 
+           text-overflow="ellipsis"  overflow="hidden" color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} 
+           ml={2} mb={2}  mt={2}><Text overflow="hidden"  text-overflow="ellipsis">{item}</Text></Button>//{`${Code_Name(item)}`} */}

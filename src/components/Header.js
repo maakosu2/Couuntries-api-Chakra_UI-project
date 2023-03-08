@@ -7,7 +7,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack,Link,Flex,Spacer,Text,Icon } from "@chakra-ui/react";
+import { Box, HStack,Link,Text,Icon } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { MoonIcon } from "@chakra-ui/icons";
 import Footer from "./Footer";
@@ -55,7 +55,7 @@ const {colorValue,colorSet}=useFetchDataContext()
 const rod=false;
 
   return (
-    <Box  as="flex" dir="column" justifyContent="space-between" >
+    <Box  d="flex" dir="column" justifyContent="space-between" >
     <Box  
       position="fixed"
       top={0}

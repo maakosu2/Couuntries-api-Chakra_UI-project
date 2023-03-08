@@ -18,12 +18,13 @@ const ProjectsSection = () => {
  
   const [searchQuery, SetSearchQuery]=useState("")
   const [RegionQuery, SetRegionQuery]=useState("")
+  const [mydata, setmydata]=useState("")
 
   const baseURL= "https://restcountries.com/v2/all";
 
-  const {isLoading, data, isError,error}=usequeryFetch(baseURL,searchQuery,RegionQuery)
+  const {isLoading, data, isError,error}=usequeryFetch()
   
-  const {colorValue}=useFetchDataContext()
+  const {colorValue,allData, setDataAll}=useFetchDataContext()
 
 
 // the filter is implemented outside of the fectch method is prevent exceeds callls to the API

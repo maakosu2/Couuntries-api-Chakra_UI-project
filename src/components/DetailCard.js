@@ -1,4 +1,4 @@
-import react from "react"
+import react, { useMemo } from "react"
 import { useParams,useNavigate, useSearchParams } from "react-router-dom"
 import { Center, Flex, Spinner } from "@chakra-ui/react";
 import DetialComponent from "./DetialComponent";
@@ -12,22 +12,15 @@ export default function DetailCard() {
     const {countryName}=useParams()
      
 
-    const BaseUrl=`https://restcountries.com/v2/alpha?codes=${countryName}`
+   
     const {searchQuery,colorValue}=useFetchDataContext()
-    const {isLoading,isError, data}=usequeryFetch(BaseUrl,countryName)
+    const {isLoading,isError, data}=usequeryFetch()
 
-    const Code_Name=(countryName)=>{
-      const BaseUrl=`https://restcountries.com/v2/alpha?codes=${countryName}`
-      const {isLoading,isError,  data}=usequeryFetch(BaseUrl,countryName)
-      if (isLoading) {
-        return "isLoading"
-      } else if (isError) {
-        return "Error"
-      } else {
-       return data[0]["name"]
-      } 
-      
-    }
+    const filtered= useMemo(()=>data?.filter(item => {
+      return (
+      item.alpha3Code.toLowerCase()=== countryName.toLowerCase() )
+     
+    })[0] )
    
    if (isLoading) {
     return(
@@ -37,7 +30,7 @@ export default function DetailCard() {
 
     return (
       
-    <DetialComponent Code_Name={Code_Name} colorValue={colorValue} {...data[0]} />
+    <DetialComponent  colorValue={colorValue} {...filtered} />
  
     )
   }

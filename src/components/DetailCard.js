@@ -5,7 +5,8 @@ import DetialComponent from "./DetialComponent";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { useFetchDataContext } from "../context/alertContext";
 import usequeryFetch from "../hooks/usequeryFetch";
-import Loading from "./LoadingComponent";
+import Loading, { Error } from "./LoadingComponent";
+import useCountryFilter from "../hooks/useCountryFilter";
 
 export default function DetailCard() {
     
@@ -13,8 +14,10 @@ export default function DetailCard() {
      
 
    
-    const {searchQuery,colorValue}=useFetchDataContext()
+    const {colorValue}=useFetchDataContext()
     const {isLoading,isError, data}=usequeryFetch()
+
+   
 
     const filtered= useMemo(()=>data?.filter(item => {
       return (
@@ -26,6 +29,11 @@ export default function DetailCard() {
     return(
     <Loading/>
       )
+   }
+   else if(isError){
+return(
+  <Error/>
+)
    }
 
     return (

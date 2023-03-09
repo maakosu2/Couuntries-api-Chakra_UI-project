@@ -13,3 +13,12 @@ size='xl'/>
     </Center>)
    
 }
+
+
+export function Error() {
+  return (
+    <Center  h='100vh' color='black'>
+  <Text fontSize='6xl' >ERROR OCURRIED</Text>
+    </Center>)
+   
+}

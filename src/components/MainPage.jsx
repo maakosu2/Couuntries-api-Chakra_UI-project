@@ -4,11 +4,10 @@ import {Search2Icon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
 import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select, Spinner, Center} from "@chakra-ui/react";
 import Cards, { DetialCard } from "./Card";
-import project from "./data" 
 import useCountryFilter from "../hooks/useCountryFilter";
 import usequeryFetch ,{useFetch}from "../hooks/usequeryFetch";
 import { useFetchDataContext } from "../context/alertContext";
-import Loading from "./LoadingComponent";
+import Loading, { Error } from "./LoadingComponent";
 
 
 
@@ -42,11 +41,11 @@ const ProjectsSection = () => {
       const BlackColor="#202631"
   return (
     <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} py="15px">
-    <Box pt={20} width="90%" mx="auto"  minHeight="91svh">
+    <Box pt={20} width="90%" mx="auto" >
        <form>
-      <Flex  alignItems="center"  my="0.95em"  justifyContent="space-between" >
+      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", md:"row"}}   gap="4" >
       
-      <Box><InputGroup>
+      <Box alignSelf="flex-start"><InputGroup>
             <Input color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}
             placeholder="Search for country..."
             name="search_bar"
@@ -55,16 +54,16 @@ const ProjectsSection = () => {
             SetSearchQuery(e.target.value)
             }
             size="md"
-            htmlSize={50}
+            htmlSize={40}
             width='auto' 
               />
 
         <InputLeftElement  children={<Search2Icon/>}/>
       </InputGroup>
       </Box>
-      <Spacer/>
-      <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-      <Select value={RegionQuery}  bgColor={`${colorValue?"white":`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:"white"} `}
+      <Spacer />
+      <Box    alignSelf={{sm:"flex-start", md:"flex-end"}}>
+      <Select  value={RegionQuery}  bg={`${colorValue?"white":`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:"white"} `}
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
             
               <option value='Africa'>Africa</option>
@@ -77,20 +76,12 @@ const ProjectsSection = () => {
       </Flex>
       </form>
  
-    {isLoading? <Center  h='100vh' color='black'>
-      <Spinner
-       thickness='4px'
-       speed='0.65s'
-       emptyColor='gray.200'
-       color='blue.500'
-       size='xl'
-       label="Loading..."  />
-      </Center>:
+    {isLoading? <Loading/>: isError? <Error/>:
      
       
       <Box
         display="grid"
-        gridTemplateColumns="repeat(4,minmax(0,1fr))"
+        gridTemplateColumns={{sm:"1", md:"repeat(4,minmax(0,1fr))"}}
         gridGap={6}
       >
        

@@ -55,7 +55,7 @@ const {colorValue,colorSet}=useFetchDataContext()
 const rod=false;
 
   return (
-    <Box  d="flex" dir="column" justifyContent="space-between" >
+    
     <Box  
       position="fixed"
       top={0}
@@ -93,9 +93,8 @@ const rod=false;
       </Box>
               
     </Box>
-    <Outlet/>
-    <Footer/>
-    </Box>
+   
+  
   );
 };
 export default Header;

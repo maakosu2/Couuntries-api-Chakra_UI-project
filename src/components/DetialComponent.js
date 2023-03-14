@@ -37,7 +37,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
    alt='Caffe Latte'
  />
  </Box  >
-   <Stack   py={4}   >
+   <Stack   py={4}  px={{sm:"inherit", lg:"10px"}} >
     <Box w="350px"   justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"

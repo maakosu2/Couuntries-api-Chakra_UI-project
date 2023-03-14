@@ -25,10 +25,10 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
     <Box   minH="93dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
     <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
-     <Box   m="0 auto"  width="90%"    >
+     <Box   m="0 auto"  width="90%"  H="40%" >
       
        <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}> 
-         <Box mr={10}   m="0 auto" >
+         <Box mr={1}    >
  <Image
    objectFit="cover"
    w={{sm:"900px",lg:'610px'}}
@@ -37,7 +37,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
    alt='Caffe Latte'
  />
  </Box  >
-   <Stack   py={4}  px={{sm:"inherit", lg:"10px"}} >
+   <Stack   py={4}  px={{sm:"inherit", lg:"5px"}} >
     <Box w="350px"   justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"

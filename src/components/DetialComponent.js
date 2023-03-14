@@ -22,15 +22,15 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
       const BlackColorButton="#202621"
  
   return (
-    <Box   minH="1000px"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
+    <Box   minH="100dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
     <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"  >
       
-       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}> 
+       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1} borderWidth={5} h={{sm:"8xl",lg:"inherit"}}> 
          <Box mr={1}    >
  <Image
-   objectFit="cover"
+   objectFit="fill"
    w={{sm:"900px",lg:'610px'}}
    h={{sm:"560px",lg:"360px"}}
    src={`${flag}`}

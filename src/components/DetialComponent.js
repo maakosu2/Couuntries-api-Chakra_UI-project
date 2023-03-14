@@ -23,22 +23,22 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
  
   return (
     <Box   minH="93dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-    <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml="10%" mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
+    <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",md:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
-     <Box   m="0 auto"  width="80%"    >
+     <Box   m="0 auto"  width="90%"  borderWidth={2}  >
       
-       <Stack flexDirection={{sm:"column" , md:"row"}} spacing={2}>
-         <Box mr={10}   m="0 auto">
+       <Stack flexDirection={{sm:"column" , md:"row"}} spacing={1}> borderWidth={2} 
+         <Box mr={10}   m="0 auto" >
  <Image
-   objectFit="fill"
-   w='80%'
-   h="340"
+   objectFit="cover"
+   w={{sm:"100",md:'610px'}}
+   h="360px"
    src={`${flag}`}
    alt='Caffe Latte'
  />
  </Box  >
    <Stack   p={4}   >
-    <Box w="350px"   marigin="0" 
+    <Box w="350px"   borderWidth={2} justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"
           as='h1'
@@ -50,11 +50,11 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1}>{name}</Text>
           
         </Box>
-    <Stack direction={{sm:"column" , md:"row"}}  spacing={4}>
+    <Stack direction={{sm:"column" , md:"row"}}  spacing={3}>
          
         <VStack   >
         
-    <Box  w="350px"  borderColor="blue" 
+    <Box   minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start"
           
           fontWeight="normal"
           as='h4'
@@ -66,7 +66,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text > Native Name : </Text>
           <Text fontWeight="light"> {nativeName}</Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start"
           
           fontWeight="normal"
           as='h4'
@@ -78,7 +78,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text > Population : </Text>
           <Text fontWeight="light"> {population.toLocaleString()} </Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start"
           
           fontWeight="normal"
           as='h4'
@@ -90,7 +90,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1}> Region : </Text>
           <Text fontWeight="light"> {region} </Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start"
           
           fontWeight="normal"
           as='h4'
@@ -102,7 +102,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1}> Sub Region : </Text>
           <Text fontWeight="light"> {subregion} </Text>
         </Box>
-        <Box  w="350px"  borderColor="blue"  
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start"  
 
           
           fontWeight="normal"
@@ -117,7 +117,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
         </Box>
         </VStack>
         <VStack   >
-        <Box  w="360px"  borderColor="blue"  
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start" 
           fontWeight="normal"
           as='h4'
           lineHeight='tight'
@@ -128,7 +128,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1} > Top Level Domain : </Text>
           <Text fontWeight="light"> {topLevelDomain[0]}</Text>
         </Box>
-        <Box  w="360px"  borderColor="blue"  m="0 auto"
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start" 
           
           fontWeight="normal"
           as='h4'
@@ -140,7 +140,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1}> Curriences : </Text>
           <Text fontWeight="light">{currencies[0]["code"]} </Text>
         </Box>
-        <Box  w="360px"  borderColor="blue"  m="0 auto" 
+        <Box  minW="140px"   borderColor="blue" borderWidth={2} alignSelf="flex-start" m="0 auto" 
           
           fontWeight="normal"
           as='h4'
@@ -161,7 +161,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
         </VStack>
 
         </Stack >
-        <Stack direction={{sm:'column',md: 'row'}}   py={5} alignItems="center">
+        <Stack direction={{sm:'column',md: 'row'}}   py={3} alignItems="center">
 
           <Box  minW="140px"   alignSelf="flex-start">
             <Text pt={1}>Border Countries:</Text>

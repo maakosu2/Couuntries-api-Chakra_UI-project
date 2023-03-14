@@ -26,7 +26,7 @@ const BorderCountry=({countryName})=>{
           loadingText='Loading'
           to={`/${countryName}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} 
           text-overflow="ellipsis"  overflow="hidden" color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} 
-          ml={2} mb={2}  mt={2}></Button>)
+           mb={2}  mt={2}></Button>)
       } else if (isError) {
         return (
         
@@ -42,7 +42,7 @@ const BorderCountry=({countryName})=>{
         <Button size="sm" w="120px"  as={Link}  boxShadow='dark-lg'
         to={`/${countryName}`} bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} 
         text-overflow="ellipsis"  overflow="hidden" color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} 
-        ml={2} mb={2}  mt={2}><Text overflow="hidden"  text-overflow="ellipsis">{filtered["name"]}</Text></Button>)
+        mr={2} mb={2}  mt={2}><Text overflow="hidden"  text-overflow="ellipsis">{filtered["name"]}</Text></Button>)
   }
 
 

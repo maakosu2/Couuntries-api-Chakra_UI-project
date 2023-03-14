@@ -14,30 +14,32 @@ const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) =
  
   const {colorValue}=useFetchDataContext()
   return(<>
-  <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' key={name}>
+  <Box maxW={{sm:"xlg",lg:'sm'}} borderWidth='1px' borderRadius='lg' overflow='hidden' key={name}  >
     <Link to={`/${alpha3Code}`}>
-     <Box borderWidth="thin">
-      <AspectRatio maxW='400px' ratio={9/ 5.7}>
+     <Box >
+      <AspectRatio maxW={{sm:"100%",lg:'400px'}} ratio={9/ 5.7}>
       <Image src={imageSrc} alt={name}  objectFit="fill"  />
       </AspectRatio>
       </Box>
-      <Box p='6' bgColor={`${colorValue?`${ WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${ WhiteColor}`} `}>
+      <Box p='6' bgColor={`${colorValue?`${ WhiteColor}`:`${BlackColor}`} `}  h={{sm:"260px",lg:"inherit"}}  color={`${colorValue?`${BlackColor}`:`${ WhiteColor}`} `}>
         <Box display='flex'  flexDirection="column">
-          <Box  mb="2" noOfLines={1}>
-             <Heading size='sm'>{title}</Heading>
+          <Box  mb="2" noOfLines={1} my={2}>
+             <Heading size={{sm:"xl",lg:'sm'}}>{title}</Heading>
           </Box>
          
           <Box
           
             fontWeight="normal"
             as='h4'
-            lineHeight='tight'
+            lineHeight="base"
             display='flex' 
             alignItems='baseline'
             //noOfLines={1}
+            
+            
           >
-            <Text pr={1}> Population : </Text>
-            <Text fontWeight="light">  { population.toLocaleString() } </Text>
+            <Text fontSize={{sm:'2xl',lg:"inherit"}} pr={1}> Population : </Text>
+            <Text    fontSize={{sm:'2xl',lg:"inherit"}} size="3xl" fontWeight="light">  { population.toLocaleString() } </Text>
           </Box>
        
 
@@ -50,8 +52,8 @@ const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) =
           alignItems='baseline'
           //noOfLines={1}
           >
-             <Text pr={1}> Region : </Text>
-         <Text fontWeight="light">  {region} </Text>
+             <Text fontSize={{sm:'2xl',lg:"inherit"}} pr={1}> Region : </Text>
+         <Text  fontSize={{sm:'2xl',lg:"inherit"}} fontWeight="light">  {region} </Text>
         </Box>
         <Box
          
@@ -62,8 +64,8 @@ const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) =
           alignItems='baseline'
           //noOfLines={1}
           >
-            <Text pr={1}> Captial : </Text>
-         <Text  fontWeight="light">  {capital} </Text>
+            <Text   fontSize={{sm:'2xl',lg:"inherit"}} pr={1}> Captial : </Text>
+         <Text fontSize={{sm:'2xl',lg:"inherit"}} fontWeight="light">  {capital} </Text>
         </Box>
       </Box>
       </Box>

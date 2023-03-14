@@ -43,9 +43,9 @@ const ProjectsSection = () => {
     <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} py="15px">
     <Box pt={20} width="90%" mx="auto" >
        <form>
-      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", md:"row"}}   gap="4" >
+      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", lg:"row"}}   gap="4"   >
       
-      <Box alignSelf="flex-start"><InputGroup>
+      <Box alignSelf="flex-start"   ><InputGroup    width={{sm:"860px", lg:"350px"}}>
             <Input color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}
             placeholder="Search for country..."
             name="search_bar"
@@ -54,7 +54,7 @@ const ProjectsSection = () => {
             SetSearchQuery(e.target.value)
             }
             size="md"
-            htmlSize={40}
+            htmlSize={120}
             width='auto' 
               />
 
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
       </InputGroup>
       </Box>
       <Spacer />
-      <Box    alignSelf={{sm:"flex-start", md:"flex-end"}}>
+      <Box    alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"500px", lg:"200px"}}>
       <Select  value={RegionQuery}  bg={`${colorValue?"white":`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:"white"} `}
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
             
@@ -80,10 +80,13 @@ const ProjectsSection = () => {
      
       
       <Box
+      mx={{sm:"4", lg:"inherit"}}
         display="grid"
-        gridTemplateColumns={{sm:"1", md:"repeat(4,minmax(0,1fr))"}}
+        gridTemplateColumns={{sm:"auto", lg:"repeat(4,minmax(0,1fr))"}}
         gridGap={6}
+       
       >
+
        
         {filtered.map((project) => (
           isLoading? 

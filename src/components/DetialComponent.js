@@ -23,21 +23,21 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
  
   return (
     <Box   minH="93dvh"   py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-    <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",md:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
+    <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"    >
       
-       <Stack flexDirection={{sm:"column" , md:"row"}} spacing={1}> 
+       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}> 
          <Box mr={10}   m="0 auto" >
  <Image
    objectFit="cover"
-   w={{sm:"100",md:'610px'}}
-   h="360px"
+   w={{sm:"900px",lg:'610px'}}
+   h={{sm:"560px",lg:"360px"}}
    src={`${flag}`}
    alt='Caffe Latte'
  />
  </Box  >
-   <Stack   p={4}   >
+   <Stack   py={4}   >
     <Box w="350px"   justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"
@@ -50,7 +50,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           <Text pr={1}>{name}</Text>
           
         </Box>
-    <Stack direction={{sm:"column" , md:"row"}}  spacing={3}>
+    <Stack direction={{sm:"column" , lg:"row"}}  spacing={3}>
          
         <VStack   >
         
@@ -161,7 +161,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
         </VStack>
 
         </Stack >
-        <Stack direction={{sm:'column',md: 'row'}}   py={3} alignItems="center">
+        <Stack direction={{sm:'column',lg: 'row'}}   py={3} alignItems={{sm:"inherit",lg:"center"}}>
 
           <Box  minW="140px"   alignSelf="flex-start">
             <Text pt={1}>Border Countries:</Text>

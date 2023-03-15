@@ -25,7 +25,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
     <Box      py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
     <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
-     <Box   m="0 auto"  width="90%"  minH="1000vh">
+     <Box   m="0 auto"  width="90%"  minH="900vh">
       
        <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1} borderWidth={5} h={{sm:"96",lg:"inherit"}}> 
          <Box mr={1}    >

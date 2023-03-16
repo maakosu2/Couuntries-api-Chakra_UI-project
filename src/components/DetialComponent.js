@@ -27,7 +27,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
      
      <Box   m="0 auto"  width="90%"  minH="90vh">
       
-       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}  h={{sm:"96",lg:"inherit"}}> 
+       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}  h={{sm:"92",lg:"inherit"}}> 
          <Box mr={1}    >
  <Image
    objectFit="fill"

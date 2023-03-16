@@ -43,7 +43,7 @@ const ProjectsSection = () => {
     <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} minH="100dvh"   color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} py="15px">
     <Box pt={20} width="90%" mx="auto" >
        <form>
-      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", lg:"row"}}   gap="4"   >
+      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", lg:"row"}}   gap="4"   h={{sm:"92",lg:"inherit"}} >
       
       <Box alignSelf="flex-start"   ><InputGroup    width={{sm:"860px", lg:"350px"}}>
             <Input color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}

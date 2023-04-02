@@ -82,7 +82,7 @@ const ProjectsSection = () => {
     {isLoading? <Loading/>: isError? <Error/>:
      
       
-      <Box 
+      <Box pb={{sm:500,md:0 }}
       mx={{sm:"0.6", lg:"inherit"}}
         display="grid"
         gridTemplateColumns={{sm:"auto", lg:"repeat(4,minmax(0,1fr))"}}

@@ -14,7 +14,7 @@ const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) =
  
   const {colorValue}=useFetchDataContext()
   return(<>
-  <Box maxW={{sm:"xlg",lg:'sm'}} borderWidth='1px' borderRadius='lg' overflow='hidden'mt={5} h={{sm:"500px",lg:"370px"}}   key={name}  >
+  <Box maxW={{sm:"xlg",lg:'sm'}} borderWidth='1px' borderRadius='lg' overflow='hidden'mt={5} maxH={{sm:"400px",lg:"370px"}}   key={name}  >
     <Link to={`/${alpha3Code}`}>
      <Box >
       <AspectRatio maxW={{sm:"100%",lg:'400px'}} ratio={9/ 5.7}>

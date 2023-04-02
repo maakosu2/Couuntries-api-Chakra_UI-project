@@ -29,16 +29,16 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
      <Box   m="0 auto"  width="90%"  minH="90vh">
       
        <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1.9} > 
-         <Box mr={1}    >
+         <Box mr={0}   alignSelf="flex-start" >
  <Image
-   objectFit="fill"
+   objectFit="cover"
    w={{sm:"900px",lg:'610px'}}
    h={{sm:"360px",lg:"360px"}}
    src={`${flag}`}
    alt='Caffe Latte'
  />
  </Box  >
-   <Stack   py={{sm:2,lg:1}}  px={{sm:"inherit", lg:"5px"}} >
+   <Stack   py={{sm:2,lg:1}}  px={{sm:"inherit", lg:"8px"}} width={750}>
     <Box w="350px"   justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"
@@ -64,8 +64,8 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           alignItems='baseline'
           //noOfLines={1}
         >
-          <Text > Native Name : </Text>
-          <Text fontWeight="light"> {nativeName}</Text>
+          <Text > Native Name :  </Text>
+          <Text fontWeight="light" px={1}>{` ${nativeName}`}</Text>
         </Box>
         <Box  minW="140px"   borderColor="blue" alignSelf="flex-start"
           
@@ -77,7 +77,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           //noOfLines={1}
         >
           <Text > Population : </Text>
-          <Text fontWeight="light"> {population.toLocaleString()} </Text>
+          <Text fontWeight="light" px={1}> {population.toLocaleString()} </Text>
         </Box>
         <Box  minW="140px"   borderColor="blue" alignSelf="flex-start"
           
@@ -89,7 +89,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           //noOfLines={1}
         >
           <Text pr={1}> Region : </Text>
-          <Text fontWeight="light"> {region} </Text>
+          <Text fontWeight="light" px={1}> {region} </Text>
         </Box>
         <Box  minW="140px"   borderColor="blue"  alignSelf="flex-start"
           
@@ -101,7 +101,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           //noOfLines={1}
         >
           <Text pr={1}> Sub Region : </Text>
-          <Text fontWeight="light"> {subregion} </Text>
+          <Text fontWeight="light" px={1}> {subregion} </Text>
         </Box>
         <Box  minW="140px"   borderColor="blue"  alignSelf="flex-start"  
 
@@ -114,7 +114,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
           //noOfLines={1}
         >
           <Text pr={1}> Captial : </Text>
-          <Text fontWeight="light"> {capital} </Text>
+          <Text fontWeight="light"px={1}> {capital} </Text>
         </Box>
         </VStack>
         <VStack   >

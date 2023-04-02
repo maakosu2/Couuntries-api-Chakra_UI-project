@@ -24,7 +24,7 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
   return (
     <Flex dir='column' justifyContent="space-between">
     <Box   pt={70}   mb={{sm:550,md:500,lg:0}} minHeight="100vh" bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-    <Button size="sm" w="100px"  boxShadow='dark-lg'  borderColor="red"  bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={{sm:2,md:10}} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
+    <Button size="sm" w="100px"  boxShadow='dark-lg'  borderColor="red"  bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"5%"}} mb={{sm:2,md:10}} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"  minH="90vh">
       

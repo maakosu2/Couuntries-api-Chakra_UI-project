@@ -13,7 +13,7 @@ export default function SiteLayout() {
   const {colorValue}=useFetchDataContext()
   
   return (
-    <Box  d="flex" dir="column"  minH="100dvh"    bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
+    <Box  d="flex" dir="column"   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
         <Header/>
          <Outlet/>
         <Footer/>

@@ -14,14 +14,14 @@ const Cards = ({ title, alpha3Code, imageSrc,population,name,region,capital }) =
  
   const {colorValue}=useFetchDataContext()
   return(<>
-  <Box maxW={{sm:"xlg",lg:'sm'}} borderWidth='1px' borderRadius='lg' overflow='hidden'mt={5} maxH={{sm:"400px",lg:"370px"}}   key={name}  >
+  <Box maxW={{sm:"xlg",lg:'sm'}} borderWidth='1px' borderRadius='lg' overflow='hidden'mt={5} maxH={{sm:"470",md:"750px",lg:"370px"}}   key={name}  >
     <Link to={`/${alpha3Code}`}>
      <Box >
       <AspectRatio maxW={{sm:"100%",lg:'400px'}} ratio={9/ 5.7}>
-      <Image src={imageSrc} alt={name}  objectFit="fill"  />
+      <Image src={imageSrc} alt={name}  objectFit="cover"  />
       </AspectRatio>
       </Box>
-      <Box p='6' bgColor={`${colorValue?`${ WhiteColor}`:`${BlackColor}`} `}  h={{sm:"160px",lg:"150px"}}  color={`${colorValue?`${BlackColor}`:`${ WhiteColor}`} `}>
+      <Box p='6' bgColor={`${colorValue?`${ WhiteColor}`:`${BlackColor}`} `}  h={{sm:"200px",md:"200px",lg:"150px"}}  color={`${colorValue?`${BlackColor}`:`${ WhiteColor}`} `}>
         <Box display='flex'  flexDirection="column">
           <Box  mb="2" noOfLines={1} my={2}>
              <Heading size={{sm:"xl",lg:'sm'}}>{title}</Heading>

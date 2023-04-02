@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, AspectRatio, HStack,Box, Image, Text, VStack,Stack,Card, CardHeader, CardBody, CardFooter,Divider,Button,ButtonGroup, Center, Flex } from "@chakra-ui/react";
+import { Heading, AspectRatio, HStack,Box, Image, Text, VStack,Stack,Card, CardHeader, CardBody, CardFooter,Divider,Button,ButtonGroup, Center, Flex, Spacer } from "@chakra-ui/react";
 import { useFetchDataContext } from '../context/alertContext';
 import usequeryFetch from '../hooks/usequeryFetch';
 import { useParams,useNavigate, Link } from "react-router-dom"
@@ -22,22 +22,23 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
       const BlackColorButton="#202621"
  
   return (
-    <Box      py={100}  bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
-    <Button size="sm" w="100px"  boxShadow='dark-lg'    bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={10} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
+    <Flex dir='column' justifyContent="space-between">
+    <Box   pt={70}   mb={{sm:550,md:500,lg:0}} minHeight="100vh" bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}>
+    <Button size="sm" w="100px"  boxShadow='dark-lg'  borderColor="red"  bgColor={`${colorValue?`${WhiteColorButton }`:`${BlackColorButton}`} `}     ml={{sm:"5%",lg:"6%"}} mb={{sm:2,md:10}} onClick={navigateHomePage} leftIcon={<ArrowBackIcon color={`${colorValue?`${BlackColorButton}`:`${WhiteColorButton}`} `}/>} >Button</Button>
      
      <Box   m="0 auto"  width="90%"  minH="90vh">
       
-       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1}  h={{sm:"92",lg:"inherit"}}> 
+       <Stack flexDirection={{sm:"column" , lg:"row"}} spacing={1.9} > 
          <Box mr={1}    >
  <Image
    objectFit="fill"
    w={{sm:"900px",lg:'610px'}}
-   h={{sm:"560px",lg:"360px"}}
+   h={{sm:"360px",lg:"360px"}}
    src={`${flag}`}
    alt='Caffe Latte'
  />
  </Box  >
-   <Stack   py={{sm:18,lg:2}}  px={{sm:"inherit", lg:"5px"}} >
+   <Stack   py={{sm:2,lg:1}}  px={{sm:"inherit", lg:"5px"}} >
     <Box w="350px"   justifyItems="flex-start"
           fontSize={24}
           fontWeight="extrabold"
@@ -181,6 +182,8 @@ export default function DetialComponent({topLevelDomain,nativeName,name,populati
   </Box>
 
   </Box>
+  <Spacer/>
+  </Flex>
   )
 }
 // to solve the problem of few hoooks called, the button componet needs to be rewritern as a component

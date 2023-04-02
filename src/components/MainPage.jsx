@@ -43,9 +43,9 @@ const ProjectsSection = () => {
     <Box   bgColor={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `} minH="100dvh"   color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `} py="15px">
     <Box pt={20} width="90%" mx="auto" >
        <form>
-      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column", lg:"row"}}   gap="4"   h={{sm:"92",lg:"inherit"}} >
+      <Flex  alignItems="center"  my="0.95em"   flexDir={{sm:"column",md:"column", lg:"row"}}   gap="4"   h={{sm:"92",lg:"inherit"}} >
       
-      <Box alignSelf="flex-start"   ><InputGroup    width={{sm:"860px", lg:"350px"}}>
+      <Box alignSelf={{sm:"flex-start",md:"flex-start" }}  ><InputGroup    width={{sm:"400px",md:"350px", lg:"350px"}}>
             <Input color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}
             placeholder="Search for country..."
             name="search_bar"
@@ -62,8 +62,10 @@ const ProjectsSection = () => {
       </InputGroup>
       </Box>
       <Spacer />
-      <Box    alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"500px", lg:"200px"}}>
-      <Select  value={RegionQuery}  bg={`${colorValue?"white":`${BlackColor}`} `}    color={`${colorValue?`${BlackColor}`:"white"} `}
+      
+      <Box   alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"400px", lg:"200px"}} >
+       
+      <Select   value={RegionQuery}  bg={`${colorValue?"white":`${BlackColor}`} `} pb={3}   color={`${colorValue?`${BlackColor}`:"white"} `}
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
             
               <option value='Africa'>Africa</option>
@@ -73,14 +75,15 @@ const ProjectsSection = () => {
               <option value='OCeania'>OCeania</option>
       </Select>
       </Box>
+     
       </Flex>
       </form>
  
     {isLoading? <Loading/>: isError? <Error/>:
      
       
-      <Box minH="100dvh" 
-      mx={{sm:"4", lg:"inherit"}}
+      <Box 
+      mx={{sm:"0.6", lg:"inherit"}}
         display="grid"
         gridTemplateColumns={{sm:"auto", lg:"repeat(4,minmax(0,1fr))"}}
         gridGap={6}

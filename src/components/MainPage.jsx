@@ -12,7 +12,6 @@ import Loading, { Error } from "./LoadingComponent";
 
 
 
-
 const ProjectsSection = () => {
  
   const [searchQuery, SetSearchQuery]=useState("")
@@ -28,14 +27,14 @@ const ProjectsSection = () => {
 
 // the filter is implemented outside of the fectch method is prevent exceeds callls to the API
 // the filtered data has is implement in the page as a non-funtion so the useMemo hooks can be invoke 
-  const filtered= useMemo(()=>data?.filter(item => {
+  const filtered= useMemo(()=>{ return data?.filter(item => {
     return (
       (item.name.toLowerCase().includes(searchQuery.toLowerCase()))
    &&  (RegionQuery ? item.region.toLowerCase()=== RegionQuery.toLowerCase() : true
     ))
    
-  }) )
-  console.log("nnnnui",filtered )
+  }) },[RegionQuery,searchQuery,data])
+
    
       const WhiteColor="white";
       const BlackColor="#202631"

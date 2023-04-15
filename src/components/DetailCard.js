@@ -19,11 +19,11 @@ export default function DetailCard() {
 
    
 
-    const filtered= useMemo(()=>data?.filter(item => {
+    const filtered= useMemo(()=>{ return data?.filter(item => {
       return (
       item.alpha3Code.toLowerCase()=== countryName.toLowerCase() )
      
-    })[0] )
+    })[0] },[data,countryName])
    
    if (isLoading) {
     return(

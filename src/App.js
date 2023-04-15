@@ -3,13 +3,18 @@ import Header from "./components/Header";
 import ProjectsSection from "./components/MainPage";
 import { QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import { BrowserRouter, Route,Routes } from "react-router-dom";
-import DetailCard from "./components/DetailCard";
+//import DetailCard from "./components/DetailCard";
 import { FetctDataProvider } from "./context/alertContext";
 import SiteLayout from "./components/SiteLayout";
+import { Suspense, lazy } from "react";
+import Loading from "./components/LoadingComponent";
+
+const DetailCard =lazy(() => import ("./components/DetailCard"))
 
 
 function App() {
   const queryClient=new QueryClient()
+  
   return (
   
     <QueryClientProvider client={queryClient}>
@@ -20,7 +25,7 @@ function App() {
         <Routes>
           <Route   path="/"  element={<SiteLayout/>}>
         <Route  index element={<ProjectsSection/>}/>
-          <Route path="/:countryName" element={<DetailCard/>}/>
+          <Route path="/:countryName" element={<Suspense  fallback={<Loading/>}><DetailCard/></Suspense>}/>
           </Route>
           </Routes>
         </BrowserRouter>

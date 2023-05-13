@@ -85,7 +85,7 @@ const {colorValue,colorSet}=useFetchDataContext()
             <Box    onClick={()=>{
              colorSet((prevoius)=>!prevoius)
             } }>
-            <Icon as={MoonIcon}  color={`${colorValue?"blue":"white"} `}     />  </Box> </Link><Text>Dark Mode</Text>
+            <Icon as={MoonIcon}  color={`${colorValue?"black":"white"} `}     />  </Box> </Link><Text>{`${colorValue?"Dark Mode":"Light Mode"} `}</Text>
             </HStack>
           </nav>
         </HStack>

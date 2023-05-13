@@ -1,6 +1,6 @@
 import React, { useState,useMemo } from "react";
 
-import {Search2Icon } from '@chakra-ui/icons'
+import {Search2Icon,ChevronDownIcon } from '@chakra-ui/icons'
 import { useFormik } from "formik";
 import { Box, Heading,Input,InputLeftElement, Flex, Spacer ,InputGroup,Select, Spinner, Center} from "@chakra-ui/react";
 import Cards, { DetialCard } from "./Card";
@@ -64,9 +64,13 @@ const ProjectsSection = () => {
       
       <Box   alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"400px", lg:"200px"}} >
        
-      <Select   value={RegionQuery}   pb={3}   
+      <Select   value={RegionQuery}   pb={3}   style={{ color: 'black' }} bg="white" 
+      color="black"
+      icon={<ChevronDownIcon />
+      
+    }
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
-            
+           
               <option   value='Africa'   style={{ color: 'black' }}>Africa</option>
               <option value='Americas' style={{ color: 'black' }}>Americas</option>
               <option value='Asia' style={{ color: 'black' }}>Asia</option>

@@ -64,18 +64,18 @@ const ProjectsSection = () => {
       
       <Box   alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"400px", lg:"200px"}} >
        
-      <Select   value={RegionQuery}   pb={3}   style={{ color: 'black' }} bg="white" 
-      color="black"
+      <Select   value={RegionQuery}   pb={3}   style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} ` }} bg={`${colorValue?`${WhiteColor}`:`${BlackColor}`} `}
+      color={`${colorValue?`${BlackColor}`:`${WhiteColor}`} `}
       icon={<ChevronDownIcon />
       
     }
-              onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
-           
-              <option   value='Africa'   style={{ color: 'black' }}>Africa</option>
-              <option value='Americas' style={{ color: 'black' }}>Americas</option>
-              <option value='Asia' style={{ color: 'black' }}>Asia</option>
-              <option value='Europe' style={{ color: 'black' }}>Europe</option>
-              <option value='OCeania' style={{ color: 'black' }}>OCeania</option>
+              onChange={(e)=> SetRegionQuery(e.target.value)} >
+                <option  selected value=''   style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>Filter by Region -All</option>
+              <option   value='Africa'   style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>Africa</option>
+              <option value='Americas' style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>Americas</option>
+              <option value='Asia' style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>Asia</option>
+              <option value='Europe' style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>Europe</option>
+              <option value='OCeania' style={{ color: `${colorValue?`${BlackColor}`:`${WhiteColor}`} `, background:`${colorValue?`${WhiteColor}`:`${BlackColor}`} ` }}>OCeania</option>
       </Select>
       </Box>
      

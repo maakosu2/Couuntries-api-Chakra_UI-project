@@ -64,14 +64,14 @@ const ProjectsSection = () => {
       
       <Box   alignSelf={{sm:"flex-start", lg:"flex-end"}}    width={{sm:"400px", lg:"200px"}} >
        
-      <Select   value={RegionQuery}  bg={`${colorValue?"white":`${BlackColor}`} `} pb={3}   color={`${colorValue?`${BlackColor}`:"white"} `}
+      <Select   value={RegionQuery}   pb={3}   
               onChange={(e)=> SetRegionQuery(e.target.value)}  placeholder='Filter by Region'>
             
-              <option value='Africa'>Africa</option>
-              <option value='Americas'>Americas</option>
-              <option value='Asia'>Asia</option>
-              <option value='Europe'>Europe</option>
-              <option value='OCeania'>OCeania</option>
+              <option   value='Africa'   style={{ color: 'black' }}>Africa</option>
+              <option value='Americas' style={{ color: 'black' }}>Americas</option>
+              <option value='Asia' style={{ color: 'black' }}>Asia</option>
+              <option value='Europe' style={{ color: 'black' }}>Europe</option>
+              <option value='OCeania' style={{ color: 'black' }}>OCeania</option>
       </Select>
       </Box>
      

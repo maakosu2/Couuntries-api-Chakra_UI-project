@@ -19,7 +19,6 @@ const Header = () => {
   const refHeader=useRef(null)
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
-    console.log(refHeader.current)
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({
@@ -52,7 +51,7 @@ const Header = () => {
     };
   }, [prevScrollPos]);
 const {colorValue,colorSet}=useFetchDataContext()
-const rod=false;
+//const rod=false;
 
   return (
     

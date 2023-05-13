@@ -8,6 +8,7 @@ import { FetctDataProvider } from "./context/alertContext";
 import SiteLayout from "./components/SiteLayout";
 import { Suspense, lazy } from "react";
 import Loading from "./components/LoadingComponent";
+import Main from "./Main";
 
 const DetailCard =lazy(() => import ("./components/DetailCard"))
 
@@ -22,12 +23,7 @@ function App() {
       <FetctDataProvider>
         <BrowserRouter>
         
-        <Routes>
-          <Route   path="/"  element={<SiteLayout/>}>
-        <Route  index element={<ProjectsSection/>}/>
-          <Route path="/:countryName" element={<Suspense  fallback={<Loading/>}><DetailCard/></Suspense>}/>
-          </Route>
-          </Routes>
+        <Main/>
         </BrowserRouter>
         </FetctDataProvider>
     </ChakraProvider>
